@@ -18,18 +18,18 @@ class PostController
         return response()->json([
             'success' => true,
             'data' => $posts->items(),
-            'meta' => [
+            'pagination' => [
                 'current_page' => $posts->currentPage(),
-                'last_page'    => $posts->lastPage(),
                 'per_page'     => $posts->perPage(),
-                'total'        => $posts->total(),
+                'total_posts'  => $posts->total(),
+                'total_pages'    => $posts->lastPage(),
             ]
         ]);
     }
 
     public function home(Request $request)
     {
-        $posts = Post::orderBy('created_at', 'desc')->take(5)->get();
+        $posts = Post::orderBy('created_at', 'desc')->take(3)->get();
 
         return response()->json([
             'success' => true,
