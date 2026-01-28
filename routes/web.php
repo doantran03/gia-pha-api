@@ -10,8 +10,7 @@ Route::get('/login', [AuthController::class, 'loginForm'])
     ->name('login');
 
 Route::post('/login', [AuthController::class, 'login'])
-    ->middleware('guest')
-    ->name('login');
+    ->middleware('guest');
 
 Route::post('/logout', [AuthController::class, 'logout'])
     ->middleware('auth')
