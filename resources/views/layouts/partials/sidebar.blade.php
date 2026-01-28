@@ -22,8 +22,8 @@
                 </a>
                 <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="#!">Tất cả bài viết</a>
-                        <a class="nav-link" href="#!">Thêm bài viết</a>
+                        <a class="nav-link" href="{{ route('posts.index') }}">Tất cả bài viết</a>
+                        <a class="nav-link" href="{{ route('posts.create') }}">Thêm bài viết</a>
                     </nav>
                 </div>
             </div>

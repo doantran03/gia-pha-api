@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\DashboardController;
 
@@ -19,7 +20,8 @@ Route::post('/logout', [AuthController::class, 'logout'])
 Route::middleware('auth')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])
         ->name('dashboard');
-
+    
+    // Member Routes
     Route::get('/members', [MemberController::class, 'index'])
         ->name('members.index');
 
@@ -40,4 +42,23 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('/member/delete/{memberId}', [MemberController::class, 'delete'])
         ->name('members.delete');
+
+    // Post Routes
+    Route::get('/posts', [PostController::class, 'index'])
+        ->name('posts.index');
+
+    Route::get('/post/create', [PostController::class, 'create'])
+        ->name('posts.create');
+    
+    Route::post('/post', [PostController::class, 'store'])
+        ->name('posts.store');
+
+    Route::get('/post/edit/{postId}', [PostController::class, 'edit'])
+        ->name('posts.edit');
+
+    Route::put('/post/update/{postId}', [PostController::class, 'update'])
+        ->name('posts.update');
+
+    Route::delete('/post/delete/{postId}', [PostController::class, 'delete'])
+        ->name('posts.delete');
 });
