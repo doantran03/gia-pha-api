@@ -39,6 +39,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/member/update/{memberId}', [MemberController::class, 'update'])
         ->name('members.update');
 
-    Route::post('/member/delete/{memberId}', [MemberController::class, 'delete'])
+    Route::delete('/member/delete/{memberId}', [MemberController::class, 'delete'])
         ->name('members.delete');
 });

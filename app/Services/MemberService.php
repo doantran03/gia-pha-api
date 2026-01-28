@@ -45,6 +45,11 @@ class MemberService
         return $updatedMember;
     }
 
+    public function delete(Member $member): bool
+    {
+        return $this->memberRepository->delete($member);
+    }
+
     /* ================== PRIVATE HELPERS ================== */
 
     private function extractPartnerIds(array &$data): array
