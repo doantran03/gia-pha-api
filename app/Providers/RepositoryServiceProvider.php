@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Repositories\Eloquent\PostRepository;
 use App\Repositories\Eloquent\MemberRepository;
+use App\Repositories\Interfaces\PostRepositoryInterface;
 use App\Repositories\Interfaces\MemberRepositoryInterface;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -13,10 +15,14 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(
-            MemberRepositoryInterface::class,
-            MemberRepository::class
-        );
+        $repositories = [
+            MemberRepositoryInterface::class => MemberRepository::class,
+            PostRepositoryInterface::class   => PostRepository::class,
+        ];
+
+        foreach ($repositories as $interface => $repository) {
+            $this->app->bind($interface, $repository);
+        }
     }
 
     /**
