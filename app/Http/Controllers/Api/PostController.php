@@ -18,11 +18,11 @@ class PostController
         return response()->json([
             'success' => true,
             'data' => $posts->items(),
-            'meta' => [
+            'pagination' => [
                 'current_page' => $posts->currentPage(),
-                'last_page'    => $posts->lastPage(),
                 'per_page'     => $posts->perPage(),
-                'total'        => $posts->total(),
+                'total_posts'  => $posts->total(),
+                'total_pages'    => $posts->lastPage(),
             ]
         ]);
     }
