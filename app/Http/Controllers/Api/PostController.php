@@ -29,7 +29,7 @@ class PostController
 
     public function home(Request $request)
     {
-        $posts = Post::orderBy('created_at', 'desc')->take(5)->get();
+        $posts = Post::orderBy('created_at', 'desc')->take(3)->get();
 
         return response()->json([
             'success' => true,
