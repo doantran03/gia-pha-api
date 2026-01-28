@@ -10,11 +10,47 @@ class PostController
 {
     public function index(Request $request)
     {
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $perPage = $request->get('per_page', 9);
+
+        $posts = Post::orderBy('created_at', 'desc')
+            ->paginate($perPage);
+
+        return response()->json([
+            'success' => true,
+            'data' => $posts->items(),
+            'meta' => [
+                'current_page' => $posts->currentPage(),
+                'last_page'    => $posts->lastPage(),
+                'per_page'     => $posts->perPage(),
+                'total'        => $posts->total(),
+            ]
+        ]);
+    }
+
+    public function home(Request $request)
+    {
+        $posts = Post::orderBy('created_at', 'desc')->take(5)->get();
 
         return response()->json([
             'success' => true,
             'data' => $posts
+        ]);
+    }
+
+    public function detail($slug)
+    {
+        $post = Post::where('slug', $slug)->first();
+
+        if (!$post) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Post not found'
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $post
         ]);
     }
 }
