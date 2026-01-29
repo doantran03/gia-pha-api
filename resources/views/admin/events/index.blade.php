@@ -21,6 +21,7 @@
                 <thead>
                     <tr>
                         <th>Tiêu đề</th>
+                        <th>Liên kết</th>
                         <th>Ngày bắt đầu</th>
                         <th>Ngày kết thúc</th>
                         <th>Tất cả ngày</th>
@@ -33,6 +34,7 @@
                     @foreach ($events as $event)
                         <tr>
                             <td>{{ $event->title }}</td>
+                            <td>{{ $event->link }}</td>
                             <td>{{ optional($event->start)->format('d/m/Y H:i a') }}</td>
                             <td>{{ optional($event->end)->format('d/m/Y H:i a') }}</td>
                             <td>{{ $event->all_day ? 'Có' : 'Không' }}</td>

@@ -10,6 +10,7 @@ class Event extends Model
         'title',
         'start',
         'end',
+        'link',
         'all_day',
         'background_color',
     ];
