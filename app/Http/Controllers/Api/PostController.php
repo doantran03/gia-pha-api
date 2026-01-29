@@ -53,4 +53,14 @@ class PostController
             'data' => $post
         ]);
     }
+
+    public function gallery()
+    {
+        $posts = Post::orderBy('created_at', 'desc')->get(['id', 'title', 'slug', 'featured_image']);
+
+        return response()->json([
+            'success' => true,
+            'data' => $posts
+        ]);
+    }
 }
