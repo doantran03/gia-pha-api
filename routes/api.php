@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\Api\EventController;
 use App\Http\Controllers\Api\MemberController;
 
 Route::prefix('v1')->group(function () {
@@ -16,4 +17,7 @@ Route::prefix('v1')->group(function () {
     Route::get('/posts/gallery', [PostController::class, 'gallery']);
 
     Route::get('/posts/{slug}', [PostController::class, 'detail']);
+
+    // Event Routes
+    Route::get('/events', [EventController::class, 'index']);
 });

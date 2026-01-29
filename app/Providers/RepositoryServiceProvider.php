@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\Eloquent\PostRepository;
+use App\Repositories\Eloquent\EventRepository;
 use App\Repositories\Eloquent\MemberRepository;
 use App\Repositories\Interfaces\PostRepositoryInterface;
+use App\Repositories\Interfaces\EventRepositoryInterface;
 use App\Repositories\Interfaces\MemberRepositoryInterface;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -17,6 +19,7 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $repositories = [
             MemberRepositoryInterface::class => MemberRepository::class,
+            EventRepositoryInterface::class  => EventRepository::class,
             PostRepositoryInterface::class   => PostRepository::class,
         ];
 
