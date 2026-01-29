@@ -13,5 +13,7 @@ Route::prefix('v1')->group(function () {
 
     Route::get('/posts/home', [PostController::class, 'home']);
 
+    Route::get('/posts/gallery', [PostController::class, 'gallery']);
+
     Route::get('/posts/{slug}', [PostController::class, 'detail']);
 });
