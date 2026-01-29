@@ -39,8 +39,17 @@
                                 </div>
                             </div>
 
-                            {{-- NGÀY BẮT ĐẦU --}}
+                            {{-- LINK --}}
                             <div class="col-md-3">
+                                <div class="form-floating">
+                                    <input type="url" class="form-control" name="link"
+                                        value="{{ old('link', $event->link) }}" placeholder="Link sự kiện">
+                                    <label>Link sự kiện</label>
+                                </div>
+                            </div>
+
+                            {{-- NGÀY BẮT ĐẦU --}}
+                            <div class="col-md-2">
                                 <div class="form-floating">
                                     <input type="datetime-local" class="form-control" name="start"
                                         value="{{ old('start', $event->start ? $event->start->format('Y-m-d\TH:i') : '') }}" placeholder="Ngày bắt đầu">
@@ -54,7 +63,7 @@
                             </div>
 
                             {{-- NGÀY KẾT THÚC --}}
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <div class="form-floating">
                                     <input type="datetime-local" class="form-control" name="end"
                                         value="{{ old('end', $event->end ? $event->end->format('Y-m-d\TH:i') : '') }}" placeholder="Ngày kết thúc">
@@ -63,7 +72,7 @@
                             </div>
 
                             {{-- BACKGROUND COLOR --}}
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <div class="form-floating">
                                     <input type="color" class="form-control" name="background_color"
                                         value="{{ old('background_color', $event->background_color) }}" placeholder="Màu nền">
@@ -73,9 +82,9 @@
 
                             {{-- TẤT CẢ NGÀY --}}
                             <div class="col-md-3">
-                                <input type="checkbox" class="form-check-input" name="all_day" value="1"
+                                <input type="checkbox" class="form-check-input" id="all_day" name="all_day" value="1"
                                     {{ old('all_day', $event->all_day) ? 'checked' : '' }} >
-                                <label class="form-check-label">Tất cả ngày</label>
+                                <label class="form-check-label" for="all_day">Tất cả ngày</label>
                             </div>
                             
                         </div>

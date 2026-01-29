@@ -18,6 +18,8 @@ return new class extends Migration
             $table->dateTime('start');
             $table->dateTime('end')->nullable();
 
+            $table->string('link')->nullable();
+
             $table->boolean('all_day')->default(false);
             $table->string('background_color')->nullable();
 

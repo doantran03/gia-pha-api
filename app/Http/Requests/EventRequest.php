@@ -18,6 +18,7 @@ class EventRequest extends FormRequest
             'title'            => 'required|string|max:255',
             'start'            => 'required|date',
             'end'              => 'nullable|date|after_or_equal:start',
+            'link'             => 'nullable|url',
             'all_day'          => 'nullable|boolean',
             'background_color' => 'nullable|hex_color',
         ];
@@ -32,6 +33,7 @@ class EventRequest extends FormRequest
             'start.date' => 'Ngày bắt đầu không đúng định dạng.',
             'end.date' => 'Ngày kết thúc không đúng định dạng.',
             'end.after_or_equal' => 'Ngày kết thúc phải lớn hơn hoặc bằng ngày bắt đầu.',
+            'link.url' => 'Link sự kiện không đúng định dạng.',
             'all_day.boolean' => 'Giá trị tất cả ngày không hợp lệ.',
             'background_color.hex_color' => 'Màu nền không đúng định dạng mã màu.',
         ];
