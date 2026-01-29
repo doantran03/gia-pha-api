@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\DashboardController;
 
@@ -61,4 +62,23 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('/post/delete/{postId}', [PostController::class, 'delete'])
         ->name('posts.delete');
+
+    // Events Routers
+    Route::get('/events', [EventController::class, 'index'])
+        ->name('events.index');
+
+    Route::get('/event/create', [EventController::class, 'create'])
+        ->name('events.create');
+    
+    Route::post('/event', [EventController::class, 'store'])
+        ->name('events.store'); 
+
+    Route::get('/event/edit/{eventId}', [EventController::class, 'edit'])
+        ->name('events.edit');
+
+    Route::put('/event/update/{eventId}', [EventController::class, 'update'])
+        ->name('events.update');
+
+    Route::delete('/event/delete/{eventId}', [EventController::class, 'delete'])
+        ->name('events.delete');
 });
