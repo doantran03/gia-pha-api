@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\EventResource;
 
 class EventController extends Controller
 {
@@ -14,7 +15,7 @@ class EventController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $events
+            'data' => EventResource::collection($events)
         ]);
     }
 }
